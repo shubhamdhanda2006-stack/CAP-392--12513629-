@@ -1,0 +1,152 @@
+1.---1480. Running Sum of 1d Array
+class Solution {
+    public int[] runningSum(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            nums[i] = nums[i] + nums[i - 1];
+        }
+        return nums;
+    }
+}
+2.---1672. Richest Customer Wealth
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int max = 0;
+
+        for (int i = 0; i < accounts.length; i++) {
+            int sum = 0;
+
+            for (int j = 0; j < accounts[i].length; j++) {
+                sum += accounts[i][j];
+            }
+
+            max = Math.max(max, sum);
+        }
+
+        return max;
+    }
+}
+
+3.---217. Contains Duplicate
+import java.util.*;
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (set.contains(nums[i])) {
+                return true;
+            }
+            set.add(nums[i]);
+        }
+
+        return false;
+    }
+}
+
+4.---344. Reverse String
+
+class Solution {
+    public void reverseString(char[] s) {
+        int i = 0;
+        int j = s.length - 1;
+
+        while (i < j) {
+            char temp = s[i];
+            s[i] = s[j];
+            s[j] = temp;
+
+            i++;
+            j--;
+        }
+    }
+}
+
+5.---125. Valid Palindrome
+class Solution {
+    public boolean isPalindrome(String s) {
+        s = s.toLowerCase().replaceAll("[^a-z0-9]", "");
+
+        int i = 0;
+        int j = s.length() - 1;
+
+        while (i < j) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return false;
+            }
+
+            i++;
+            j--;
+        }
+
+        return true;
+    }
+}
+6.---709. To Lower Case
+class Solution {
+    public String toLowerCase(String s) {
+        return s.toLowerCase();
+    }
+}
+
+7.---1603. Design Parking System
+class ParkingSystem {
+    int big, medium, small;
+
+    public ParkingSystem(int big, int medium, int small) {
+        this.big = big;
+        this.medium = medium;
+        this.small = small;
+    }
+
+    public boolean addCar(int carType) {
+        if (carType == 1 && big > 0) {
+            big--;
+            return true;
+        }
+        if (carType == 2 && medium > 0) {
+            medium--;
+            return true;
+        }
+        if (carType == 3 && small > 0) {
+            small--;
+            return true;
+        }
+        return false;
+    }
+}
+
+8.---933. Number of Recent Calls
+import java.util.*;
+
+class RecentCounter {
+    Queue<Integer> q;
+
+    public RecentCounter() {
+        q = new LinkedList<>();
+    }
+
+    public int ping(int t) {
+        q.add(t);
+
+        while (q.peek() < t - 3000) {
+            q.poll();
+        }
+
+        return q.size();
+    }
+}
+
+9.---1470. Shuffle the Array
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int[] ans = new int[2 * n];
+
+        for (int i = 0; i < n; i++) {
+            ans[2 * i] = nums[i];
+            ans[2 * i + 1] = nums[i + n];
+        }
+
+        return ans;
+    }
+}
+
